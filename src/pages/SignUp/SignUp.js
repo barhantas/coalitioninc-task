@@ -1,7 +1,7 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import store from "store";
-import { Form, Icon, Input, Button, Layout, Typography } from "antd";
+import { Form, Row, Icon, Input, Button, Layout, Typography } from "antd";
 import "../../assets/scss/signUp.scss";
 
 import { useFetch } from "../../hooks";
@@ -10,6 +10,10 @@ import { URLS } from "../../constants";
 
 const { Title } = Typography;
 const { TextArea } = Input;
+
+const StyledFormItem = (props) => (
+  <Form.Item style={{ marginBottom: 6 }} {...props} />
+);
 
 function SignUp({ form, history }) {
   const { getFieldDecorator, validateFields, getFieldValue } = form;
@@ -63,7 +67,7 @@ function SignUp({ form, history }) {
   ) : (
     <Layout className="sign-up-layout">
       <img
-        style={{ height: 60, width: 60 }}
+        style={{ height: 45, width: 45 }}
         src={require("../../assets/img/favicon.png")}
         alt=""
       />
@@ -71,7 +75,7 @@ function SignUp({ form, history }) {
         <Title level={2} className="text-center">
           Sign Up
         </Title>
-        <Form.Item label="First Name">
+        <StyledFormItem label="First Name">
           {getFieldDecorator("firstName", {
             rules: [
               { required: true, message: "Please enter your first Name!" },
@@ -80,11 +84,10 @@ function SignUp({ form, history }) {
             <Input
               prefix={<Icon type="user" className="input-icon" />}
               placeholder="First Name"
-              size="large"
             />
           )}
-        </Form.Item>
-        <Form.Item label="Last Name">
+        </StyledFormItem>
+        <StyledFormItem label="Last Name">
           {getFieldDecorator("lastName", {
             rules: [
               { required: true, message: "Please enter your last Name!" },
@@ -93,34 +96,31 @@ function SignUp({ form, history }) {
             <Input
               prefix={<Icon type="user" className="input-icon" />}
               placeholder="Last Name"
-              size="large"
             />
           )}
-        </Form.Item>
-        <Form.Item label="Email Address">
+        </StyledFormItem>
+        <StyledFormItem label="Email Address">
           {getFieldDecorator("email", {
             rules: [{ required: true, message: "Please enter your email!" }],
           })(
             <Input
               prefix={<Icon type="user" className="input-icon" />}
               placeholder="Email"
-              size="large"
             />
           )}
-        </Form.Item>
-        <Form.Item label="Address">
+        </StyledFormItem>
+        <StyledFormItem label="Address">
           {getFieldDecorator("address", {
             rules: [{ required: true, message: "Please enter your address!" }],
           })(
             <TextArea
-              rows={4}
+              rows={2}
               prefix={<Icon type="pushpin" className="input-icon" />}
               placeholder="Address"
-              size="large"
             />
           )}
-        </Form.Item>
-        <Form.Item label="Password">
+        </StyledFormItem>
+        <StyledFormItem label="Password">
           {getFieldDecorator("password", {
             rules: [{ required: true, message: "Please enter your Password!" }],
           })(
@@ -128,11 +128,10 @@ function SignUp({ form, history }) {
               prefix={<Icon type="lock" className="input-icon" />}
               type="password"
               placeholder="Password"
-              size="large"
             />
           )}
-        </Form.Item>
-        <Form.Item label="Confirm Password">
+        </StyledFormItem>
+        <StyledFormItem label="Confirm Password">
           {getFieldDecorator("repeatedPassword", {
             rules: [
               {
@@ -153,14 +152,21 @@ function SignUp({ form, history }) {
               prefix={<Icon type="lock" className="input-icon" />}
               type="password"
               placeholder="Password"
-              size="large"
             />
           )}
-        </Form.Item>
+        </StyledFormItem>
 
-        <Button type="primary" htmlType="submit" block>
+        <Button
+          type="primary"
+          htmlType="submit"
+          block
+          style={{ marginTop: 16 }}
+        >
           Sign Up
         </Button>
+        <Row style={{ paddingTop: 12, textAlign: "center" }}>
+          <Link to="/login">Login</Link>
+        </Row>
       </Form>
     </Layout>
   );
