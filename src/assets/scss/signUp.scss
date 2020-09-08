@@ -1,0 +1,16 @@
+.sign-up-layout{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sign-up-form {
+    margin-top: 30px;
+    width: 300px;
+
+    .input-icon {
+      color: rgba(0,0,0, 0.25);
+    }
+
+  }
+}

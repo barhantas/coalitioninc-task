@@ -1,0 +1,2 @@
+export const INIT_BROKER_LIST = "INIT_BROKER_LIST";
+export const SET_BROKER_LIST = "SET_BROKER_LIST";
