@@ -72,7 +72,7 @@ function useFetch(fetchInitialObj) {
       }
     };
 
-    !!fetchObj && fetchData();
+    !!fetchObj && !!fetchObj.url && fetchData();
 
     doFetch(null);
   }, [fetchObj]);

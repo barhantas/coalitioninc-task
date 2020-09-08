@@ -62,6 +62,9 @@ flask db migrate -m "create tables"
 ```shell
 flask db upgrade
 ```
+```shell
+python data-loader.py
+```
 
 ### Start Server
 on the package.json root
@@ -70,6 +73,7 @@ yarn start-api
 ```
 
 
-## FOR RUN WITH DOCKER
---------
+## Pre-loaded brokers
+### default password is "123456"
+### agencyId = 1
 
