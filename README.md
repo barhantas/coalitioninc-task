@@ -17,10 +17,11 @@ with SSH:
 ```shell
 git clone git@github.com:barhantas/coalitioninc-task.git
 ```
-## React App
 
 ### Prerequisites
 Make sure that you have Node and python installed.
+
+## React App
 
 ### Installation UI
 ```shell
@@ -31,6 +32,10 @@ yarn install
 ```shell
 yarn start
 ```
+
+
+
+## Flask App
 
 ### Installation Server
 ```shell
