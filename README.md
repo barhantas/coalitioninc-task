@@ -24,6 +24,10 @@ Make sure that you have Node and python installed.
 ## React App
 
 ### Installation UI
+
+```shell
+cd coalitioninc-task
+```
 ```shell
 yarn install
 ```
