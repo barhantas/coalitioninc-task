@@ -11,7 +11,12 @@ import { URLS } from "../../constants";
 function Login({
   form,
   location: { state: { registeredUserEmail } = {} } = {},
+  location,
+  ...rest
 }) {
+  console.log(location)
+  console.log(rest)
+
   const { getFieldDecorator, validateFields } = form;
   const authToken = !!store.get("authenticationToken");
   const {
@@ -32,7 +37,7 @@ function Login({
     });
   };
 
-  console.log(registeredUserEmail);
+  console.log("registeredUserEmail",registeredUserEmail);
 
   return token || authToken ? (
     <Redirect to="/" />

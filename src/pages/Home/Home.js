@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     setHeaderComponent(<b>Create new product</b>);
     doFetch({
-      url: URLS.brokers,
+      url: URLS.brokerList,
     });
 
     return () => {

@@ -2,15 +2,20 @@ from app import db, app
 from passlib.apps import custom_app_context as pwd_context
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
+from sqlalchemy.orm import relationship, backref
 
 
 class Broker(db.Model):
+    __tablename__ = 'broker'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     firstname = db.Column(db.String(140))
     lastname = db.Column(db.String(140))
     address = db.Column(db.String(140))
+    agencyId = db.Column(db.Integer, db.ForeignKey(
+        'agency.id'), nullable=False)
+    agency = relationship("Agency", backref=backref("agency", uselist=False))
 
     def __repr__(self):
         return '<Broker {}>'.format(self.email)
@@ -36,3 +41,37 @@ class Broker(db.Model):
             return None  # invalid token
         user = User.query.get(data['id'])
         return user
+
+    @property
+    def serialize(self):
+       return {
+           'id': self.id,
+           'email': self.email,
+           'firstname': self.firstname,
+           'lastname': self.lastname,
+           'address': self.address,
+           'agency': self.serialize_agency
+       }
+
+    @property
+    def serialize_agency(self):
+        return {
+            'id': self.agency.id,
+            'title': self.agency.title,
+            'domain': self.agency.domain,
+            'address': self.agency.address,
+        }
+
+
+class Agency(db.Model):
+    __tablename__ = 'agency'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(140))
+    domain = db.Column(db.String(140))
+    address = db.Column(db.String(140))
+
+
+class AgencyDomainWhiteList(db.Model):
+    __tablename__ = 'agency_domain_white_list'
+    id = db.Column(db.Integer, primary_key=True)
+    domain = db.Column(db.String(140))

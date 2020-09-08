@@ -68,17 +68,6 @@ function SignUp({ form, history }) {
     });
   };
 
-  // if (registeredUserEmail) {
-  //   return (
-  //     <Redirect
-  //       to={{
-  //         pathname: "/login",
-  //         state: { registeredUserEmail },
-  //       }}
-  //     />
-  //   );
-  // }
-
   return token || authToken ? (
     <Redirect to="/" />
   ) : (

@@ -1,7 +1,7 @@
 const URLS = {
   login: "/login",
   register: "/register",
-  dashboardRetrive: "/dashboard-retrive",
+  brokerList: "/broker-list",
 };
 
 export default URLS;
