@@ -25,7 +25,6 @@ def register():
     if not re.search('^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$', email):
         raise InvalidUsage(
             'Please enter an valid email.', status_code=500)
-        # for custom mails use: '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w+$'
 
     emailDomain = email.split("@")[1]
     if AgencyDomainWhiteList.query.filter_by(domain=emailDomain).first() is None:

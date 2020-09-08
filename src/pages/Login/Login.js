@@ -14,8 +14,8 @@ function Login({
   location,
   ...rest
 }) {
-  console.log(location)
-  console.log(rest)
+  console.log(location);
+  console.log(rest);
 
   const { getFieldDecorator, validateFields } = form;
   const authToken = !!store.get("authenticationToken");
@@ -37,7 +37,7 @@ function Login({
     });
   };
 
-  console.log("registeredUserEmail",registeredUserEmail);
+  console.log("registeredUserEmail", registeredUserEmail);
 
   return token || authToken ? (
     <Redirect to="/" />
@@ -73,14 +73,12 @@ function Login({
             />
           )}
         </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" size="large">
-            Log in
-          </Button>
-          <Row>
-            <Link to="/sign-up">Sign Up</Link>
-          </Row>
-        </Form.Item>
+        <Button type="primary" htmlType="submit" block>
+          Log in
+        </Button>
+        <Row style={{ paddingTop: 12 }}>
+          <Link to="/sign-up">Sign Up</Link>
+        </Row>
       </Form>
     </Layout>
   );

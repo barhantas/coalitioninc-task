@@ -9,6 +9,7 @@ import { setAuthorizationToken } from "../../utils/API";
 import { URLS } from "../../constants";
 
 const { Title } = Typography;
+const { TextArea } = Input;
 
 function SignUp({ form, history }) {
   const { getFieldDecorator, validateFields, getFieldValue } = form;
@@ -28,35 +29,24 @@ function SignUp({ form, history }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   address,
-    //   password,
-    // } = await validateFields();
-    // const base64DecodedHeader = btoa(`${email}:${password}`);
+    const {
+      firstName,
+      lastName,
+      email,
+      address,
+      password,
+    } = await validateFields();
 
     doRegisterFetch({
       url: URLS.register,
       method: "POST",
       params: {
-        email: getFieldValue("email"),
-        firstname: "baris",
-        lastname: "hantas",
-        address: "test adres",
-        password: "123456",
+        email: email,
+        firstname: firstName,
+        lastname: lastName,
+        address: address,
+        password: password,
       },
-      // params: {
-      //   email: email,
-      //   first_name: firstName,
-      //   last_name: lastName,
-      //   address: address,
-      //   password: password,
-      // },
-      // headers: {
-      //   Authorization: `Basic ${base64DecodedHeader}`,
-      // },
       onSuccess: () => {
         history.push({
           pathname: "/login",
@@ -89,7 +79,7 @@ function SignUp({ form, history }) {
           })(
             <Input
               prefix={<Icon type="user" className="input-icon" />}
-              placeholder="first name"
+              placeholder="First Name"
               size="large"
             />
           )}
@@ -102,7 +92,7 @@ function SignUp({ form, history }) {
           })(
             <Input
               prefix={<Icon type="user" className="input-icon" />}
-              placeholder="last name"
+              placeholder="Last Name"
               size="large"
             />
           )}
@@ -113,7 +103,7 @@ function SignUp({ form, history }) {
           })(
             <Input
               prefix={<Icon type="user" className="input-icon" />}
-              placeholder="last name"
+              placeholder="Email"
               size="large"
             />
           )}
@@ -122,9 +112,10 @@ function SignUp({ form, history }) {
           {getFieldDecorator("address", {
             rules: [{ required: true, message: "Please enter your address!" }],
           })(
-            <Input
+            <TextArea
+              rows={4}
               prefix={<Icon type="pushpin" className="input-icon" />}
-              placeholder="address"
+              placeholder="Address"
               size="large"
             />
           )}
@@ -167,11 +158,9 @@ function SignUp({ form, history }) {
           )}
         </Form.Item>
 
-        <Form.Item className="text-center">
-          <Button type="primary" htmlType="submit" size="large">
-            Sign Up
-          </Button>
-        </Form.Item>
+        <Button type="primary" htmlType="submit" block>
+          Sign Up
+        </Button>
       </Form>
     </Layout>
   );
