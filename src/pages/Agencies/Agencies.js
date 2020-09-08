@@ -44,7 +44,7 @@ function Agencies() {
     },
   ];
 
-  return <Table rowKey="_id" dataSource={data} columns={columns} />;
+  return <Table rowKey="id" dataSource={data} columns={columns} />;
 }
 
 export default Agencies;

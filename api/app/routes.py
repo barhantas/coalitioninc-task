@@ -1,8 +1,12 @@
 from flask import render_template, request, redirect, jsonify, json
+from app.exceptions import InvalidUsage
+from flask_httpauth import HTTPBasicAuth
+import re
+
 from app import app, db
 from app.models import Broker, Agency, AgencyDomainWhiteList
-from app.exceptions import InvalidUsage
-import re
+
+auth = HTTPBasicAuth()
 
 
 @app.route('/register', methods=['POST'])
@@ -76,15 +80,28 @@ def login():
 
 
 @app.route('/broker-list', methods=['GET'])
+@auth.login_required
 def get_brokers():
     brokers = Broker.query.all()
     return jsonify([i.serialize for i in brokers])
 
 
 @app.route('/agency-list', methods=['GET'])
+@auth.login_required
 def get_agencies():
     agencies = Agency.query.all()
     return jsonify([i.serialize for i in agencies])
+
+
+@auth.verify_password
+def verify_password(token, password):
+    authToken = request.headers.get('Authorization')
+    broker = Broker.verify_auth_token(authToken)
+
+    if not broker:
+        return False
+
+    return True
 
 
 @app.errorhandler(InvalidUsage)

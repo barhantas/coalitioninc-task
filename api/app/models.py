@@ -39,8 +39,8 @@ class Broker(db.Model):
             return None  # valid token, but expired
         except BadSignature:
             return None  # invalid token
-        user = User.query.get(data['id'])
-        return user
+        broker = Broker.query.get(data['id'])
+        return broker
 
     @property
     def serialize(self):

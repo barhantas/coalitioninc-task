@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { Layout } from 'antd';
+import React, { useContext } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { Layout } from "antd";
 
-import SideBarLayout from './SideBarLayout';
-import HeaderLayout from './HeaderLayout';
-import FooterLayout from './FooterLayout';
+import SideBarLayout from "./SideBarLayout";
+import HeaderLayout from "./HeaderLayout";
+import FooterLayout from "./FooterLayout";
 
-import { authRoutes } from '../router';
-import { LayoutContext } from '../contexts';
+import { authRoutes } from "../router";
+import { LayoutContext } from "../contexts";
 
 const { Content } = Layout;
 
@@ -15,13 +15,13 @@ function MainLayout() {
   const { sideBarCollapsed } = useContext(LayoutContext);
 
   return (
-    <Layout style={{ marginLeft: sideBarCollapsed ? '80px' : '200px' }}>
+    <Layout style={{ marginLeft: sideBarCollapsed ? "80px" : "200px" }}>
       <SideBarLayout />
       <Layout>
         <HeaderLayout />
-        <Content>
+        <Content style={{ height: "calc(100vh - 160px)" }}>
           <Switch>
-            {authRoutes.map(route => (
+            {authRoutes.map((route) => (
               <Route
                 exact={true}
                 key={route.path}

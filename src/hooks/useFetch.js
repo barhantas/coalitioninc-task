@@ -74,7 +74,7 @@ function useFetch(fetchInitialObj) {
 
     !!fetchObj && fetchData();
 
-    doFetch(null);
+    // doFetch(null);
   }, [fetchObj]);
 
   const defaultResponseValue =

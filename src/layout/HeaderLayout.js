@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
-import { Layout, Icon, Modal } from 'antd';
-import store from 'store';
-import { Redirect } from 'react-router-dom';
+import React, { useState, useContext } from "react";
+import { Layout, Icon, Modal } from "antd";
+import store from "store";
+import { Redirect } from "react-router-dom";
 
-import { LayoutContext } from '../contexts';
+import { LayoutContext } from "../contexts";
 
 const { Header } = Layout;
 
@@ -14,19 +14,23 @@ function HeaderLayout() {
   const [isLogedOut, setLogedOut] = useState(false);
 
   const handleLogout = () => {
-    store.set('authenticationToken', null);
+    store.set("authenticationToken", null);
     setLogedOut(true);
-  }
+  };
 
   return (
     <Header>
       {isLogedOut && <Redirect to="/login" />}
       <div className="header-wrapper">
         <div className="page-header">{headerComponent}</div>
-        <Icon type="logout" onClick={() => setLogoutModalOpen(true)} className="logout-icon" />  
+        <Icon
+          type="logout"
+          onClick={() => setLogoutModalOpen(true)}
+          className="logout-icon"
+        />
       </div>
       <Modal
-        title="Log out from dashboard"
+        title="Log out from Coalition"
         visible={isLogoutModalOpen}
         onOk={handleLogout}
         onCancel={() => setLogoutModalOpen(false)}

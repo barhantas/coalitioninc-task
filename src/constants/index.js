@@ -1,3 +1,3 @@
-export const URL_BASE_NAME = '/ui';
+export const URL_BASE_NAME = "/coalition";
 
-export { default as URLS } from './urls';
+export { default as URLS } from "./urls";
