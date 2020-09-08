@@ -42,8 +42,9 @@ yarn start
 ## Flask App
 
 ### Installation Server
+open new terminal and go to project path
 ```shell
-cd api
+cd coalitioninc-task/api
 ```
 ```shell
 python3 -m venv venv
