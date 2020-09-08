@@ -4,7 +4,6 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import Brokers from "../pages/Brokers";
 import Agencies from "../pages/Agencies";
-import ProductDetails from "../pages/ProductDetails";
 
 export const authRoutes = [
   {
@@ -21,14 +20,8 @@ export const authRoutes = [
     icon: "shop",
     showAlways: true,
   },
-  {
-    path: "/product/:productSlug",
-    component: ProductDetails,
-    name: "Product details",
-    icon: "team",
-    showAlways: false,
-  },
 ];
+
 export const baseRoutes = [
   {
     path: "/login",
