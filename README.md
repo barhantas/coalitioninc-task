@@ -17,7 +17,7 @@ with SSH:
 ```shell
 git clone git@github.com:barhantas/coalitioninc-task.git
 ```
-## FOR RUN WITH NODE
+## React App
 
 ### Prerequisites
 Make sure that you have Node and python installed.
