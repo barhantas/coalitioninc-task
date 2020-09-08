@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import { Layout, Menu, Icon } from 'antd';
 import pathToRegexp from 'path-to-regexp';
 
-import { dashboardRoutes } from '../router';
+import { authRoutes } from '../router';
 import { LayoutContext } from '../contexts';
 
 const { Sider } = Layout;
@@ -37,7 +37,7 @@ function SideBarLayout(props) {
         activeKey={pathname}
         selectedKeys={[pathname]}
       >
-        {dashboardRoutes.map(({ path, showAlways, icon, name }) => (
+        {authRoutes.map(({ path, showAlways, icon, name }) => (
           <Menu.Item key={isPathMatchRequestedUrl(path) ? pathname : path}>
             {(showAlways || isPathMatchRequestedUrl(path)) && (
               <Link to={path}>

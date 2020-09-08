@@ -81,6 +81,12 @@ def get_brokers():
     return jsonify([i.serialize for i in brokers])
 
 
+@app.route('/agency-list', methods=['GET'])
+def get_agencies():
+    agencies = Agency.query.all()
+    return jsonify([i.serialize for i in agencies])
+
+
 @app.errorhandler(InvalidUsage)
 def handle_invalid_usage(error):
     response = jsonify(error.to_dict())

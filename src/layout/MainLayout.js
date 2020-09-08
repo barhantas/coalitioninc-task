@@ -6,7 +6,7 @@ import SideBarLayout from './SideBarLayout';
 import HeaderLayout from './HeaderLayout';
 import FooterLayout from './FooterLayout';
 
-import { dashboardRoutes } from '../router';
+import { authRoutes } from '../router';
 import { LayoutContext } from '../contexts';
 
 const { Content } = Layout;
@@ -21,7 +21,7 @@ function MainLayout() {
         <HeaderLayout />
         <Content>
           <Switch>
-            {dashboardRoutes.map(route => (
+            {authRoutes.map(route => (
               <Route
                 exact={true}
                 key={route.path}

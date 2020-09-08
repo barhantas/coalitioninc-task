@@ -2,23 +2,23 @@ import MainLayout from "../layout";
 // GeneralViews
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
-import Home from "../pages/Home";
-import CreateProduct from "../pages/CreateProduct";
+import Brokers from "../pages/Brokers";
+import Agencies from "../pages/Agencies";
 import ProductDetails from "../pages/ProductDetails";
 
-export const dashboardRoutes = [
+export const authRoutes = [
   {
     path: "/",
-    component: Home,
-    name: "Home",
-    icon: "shop",
+    component: Brokers,
+    name: "Brokers",
+    icon: "team",
     showAlways: true,
   },
   {
-    path: "/create-product",
-    component: CreateProduct,
-    name: "Create Product",
-    icon: "upload",
+    path: "/agencies",
+    component: Agencies,
+    name: "Agencies",
+    icon: "shop",
     showAlways: true,
   },
   {

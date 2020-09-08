@@ -44,14 +44,14 @@ class Broker(db.Model):
 
     @property
     def serialize(self):
-       return {
-           'id': self.id,
-           'email': self.email,
-           'firstname': self.firstname,
-           'lastname': self.lastname,
-           'address': self.address,
-           'agency': self.serialize_agency
-       }
+        return {
+            'id': self.id,
+            'email': self.email,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+            'address': self.address,
+            'agency': self.serialize_agency
+        }
 
     @property
     def serialize_agency(self):
@@ -69,6 +69,15 @@ class Agency(db.Model):
     title = db.Column(db.String(140))
     domain = db.Column(db.String(140))
     address = db.Column(db.String(140))
+
+    @property
+    def serialize(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'domain': self.domain,
+            'address': self.address,
+        }
 
 
 class AgencyDomainWhiteList(db.Model):
