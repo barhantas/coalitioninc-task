@@ -22,35 +22,47 @@ git clone git@github.com:barhantas/coalitioninc-task.git
 ### Prerequisites
 Make sure that you have Node and python installed.
 
-### Install Node Packages
-Before run project for development you need to install packages with:
-
-*Server*
-```shell
-cd api
-pip install -r requirements.txt
---------
-```
-
-*Client*
-
+### Installation UI
 ```shell
 yarn install
 ```
 
-### Start Project
-Start Server and Client seperately with :
-
-*Server*
-```shell
-------------
-```
-
-*Client*
+### Start UI
 ```shell
 yarn start
 ```
 
+### Installation Server
+```shell
+cd api
+```
+```shell
+python3 -m venv venv
+```
+```shell
+source venv/bin/activate
+```
+```shell
+pip install --upgrade pip
+```
+```shell
+pip install -r requirements.txt
+```
+```shell
+flask db init
+```
+```shell
+flask db migrate -m "create tables"
+```
+```shell
+flask db upgrade
+```
+
+### Start Server
+on the package.json root
+```shell
+yarn start-api
+```
 
 
 ## FOR RUN WITH DOCKER
